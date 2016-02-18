@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="utf-8" />
+        <title>AceMd Test</title>
+        <link rel="stylesheet" href="../css/acemd.css" />
+        <script type="text/javascript" src="../lib/ace/ace.js"></script>
+        <script type="text/javascript" src="../lib/jquery.min.js"></script>        
+        <script type="text/javascript" src="../src/acemd.js"></script>
+    </head>
+    <body>
+        <div id="layout">
+            <div id="acemd">
+            </div>
+        </div>
+        
+        <script type="text/javascript">
+            ace.config.set("basePath", "../lib/ace");
+            var acemarkdown;
+            $(function() {                
+                acemarkdown = acemd("acemd", {});
+            });
+        </script>
+    </body>
+</html>
