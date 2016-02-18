@@ -57,14 +57,22 @@
          */
         init : function (id, options) {
             var editor = this.editor = $("#" + id);
-            var toolbar = this.toolbar = $("<div style=\"height: 40px; border: 1px solid #ddd;\"></div>");
-            var aceeditor = this.aceeditor = $("<div style=\"float: left; border: 1px solid #ddd; width: 50%;\">dddddd</div>");
-            var mdpreview = this.mdpreview = $("<div style=\"float: left; border: 1px solid #ddd; width: 50%;\">dddddddddd</div>");            
+            var toolbar = this.toolbar = $("<div style=\"height: 0px; border: 0px solid #ddd;\"></div>");
+            var content = $("<div style=\"height: 800px; border: 1px solid #ddd;\"></div>");
+            var mdDiv = this.mdDiv = $("<div style=\"height: 800px; float: left; width: 50%; line-height: 1.6;\"></div>");
+            var preDiv = this.preDiv = $("<div style=\"height: 800px; float: left; width: 50%;\"></div>");
+            var footDiv = this.footDiv = $("<div style=\"height: 0px; clear: both;\"></div>");
+
             editor.append(toolbar);
-            editor.append(aceeditor);
-            editor.append(mdpreview);
-            
+            editor.append(content);
+            content.append(mdDiv);
+            content.append(preDiv);
             editor.addClass("acemd");
+
+            var aceEditor = this.aceEditor = ace.edit(mdDiv.get(0));
+            aceEditor.setTheme('ace/theme/sqlserver');
+            aceEditor.getSession().setMode('ace/mode/markdown');
+            aceEditor.setFontSize(14);
             
             return this;
         },
